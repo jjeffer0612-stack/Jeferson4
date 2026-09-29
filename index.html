@@ -1,0 +1,853 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portafolio | Ingeniería de Software</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        header {
+            background: #111827;
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .logo span {
+            color: #a78bfa;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        /* ===== INICIO ===== */
+
+        #inicio {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            background:
+                radial-gradient(circle at top right, #312e81, transparent 35%),
+                radial-gradient(circle at bottom left, #075985, transparent 35%),
+                #0f172a;
+        }
+
+        .inicio-contenido {
+            max-width: 850px;
+        }
+
+        .inicio-contenido h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .inicio-contenido h1 span {
+            color: #38bdf8;
+        }
+
+        .inicio-contenido h2 {
+            color: #a78bfa;
+            margin-bottom: 20px;
+        }
+
+        .inicio-contenido p {
+            color: #cbd5e1;
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .botones {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            margin: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-principal {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .btn-secundario {
+            border: 2px solid #a78bfa;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.85;
+        }
+
+        /* ===== SECCIONES ===== */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .titulo h2 {
+            font-size: 35px;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            color: #94a3b8;
+        }
+
+        /* ===== SOBRE MÍ ===== */
+
+        .sobre {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .perfil {
+            background: #1e293b;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #334155;
+        }
+
+        .perfil h3 {
+            color: #a78bfa;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .perfil p {
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .datos {
+            display: grid;
+            gap: 15px;
+        }
+
+        .dato {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .dato strong {
+            color: #38bdf8;
+        }
+
+        /* ===== HABILIDADES ===== */
+
+        .habilidades {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .habilidad {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .habilidad:hover {
+            transform: translateY(-5px);
+        }
+
+        .habilidad .icono {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .habilidad h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .habilidad p {
+            color: #cbd5e1;
+        }
+
+        /* ===== PROYECTOS ===== */
+
+        .proyectos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .proyecto {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .proyecto:hover {
+            transform: translateY(-7px);
+            border-color: #38bdf8;
+        }
+
+        .proyecto h3 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .proyecto p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .tecnologias {
+            margin-top: 18px;
+        }
+
+        .tecnologias span {
+            display: inline-block;
+            background: #312e81;
+            color: white;
+            padding: 6px 10px;
+            margin: 3px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        /* ===== FORMACIÓN ===== */
+
+        .formacion {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .estudio {
+            background: #1e293b;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #a78bfa;
+            border-radius: 8px;
+        }
+
+        .estudio h3 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .estudio p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACTO ===== */
+
+        .contacto {
+            max-width: 700px;
+            margin: auto;
+            background: #1e293b;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .contacto input,
+        .contacto textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 7px;
+            background: #334155;
+            color: white;
+            font-size: 15px;
+        }
+
+        .contacto textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .contacto button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #38bdf8;
+            color: #0f172a;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contacto button:hover {
+            background: #7dd3fc;
+        }
+
+        #mensaje {
+            text-align: center;
+            margin-top: 15px;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #020617;
+            text-align: center;
+            padding: 25px;
+            color: #94a3b8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .inicio-contenido h1 {
+                font-size: 42px;
+            }
+
+            .sobre {
+                grid-template-columns: 1fr;
+            }
+
+            .habilidades {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .proyectos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .inicio-contenido h1 {
+                font-size: 35px;
+            }
+
+            .habilidades,
+            .proyectos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== MENÚ ===== -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                SOFT<span>PORTFOLIO</span>
+            </div>
+
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre">Sobre mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#formacion">Formación</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ===== INICIO ===== -->
+
+    <section id="inicio">
+
+        <div class="inicio-contenido">
+
+            <h1>
+                Hola, soy <span>Jefferson</span>
+            </h1>
+
+            <h2>
+                Estudiante de Ingeniería de Software
+            </h2>
+
+            <p>
+                Bienvenido a mi portafolio profesional.
+                Aquí presento mis conocimientos, habilidades
+                y proyectos desarrollados en el área de
+                Ingeniería de Software y desarrollo web.
+            </p>
+
+            <div class="botones">
+
+                <a href="#proyectos" class="btn btn-principal">
+                    Ver mis proyectos
+                </a>
+
+                <a href="#contacto" class="btn btn-secundario">
+                    Contactarme
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== SOBRE MÍ ===== -->
+
+    <section id="sobre">
+
+        <div class="titulo">
+
+            <h2>Sobre mí</h2>
+
+            <p>
+                Conoce un poco más sobre mi perfil.
+            </p>
+
+        </div>
+
+        <div class="sobre">
+
+            <div class="perfil">
+
+                <h3>Ingeniería de Software</h3>
+
+                <p>
+                    Soy estudiante de Ingeniería de Software
+                    interesado en el desarrollo de aplicaciones
+                    web y soluciones tecnológicas. Me gusta
+                    aprender nuevas herramientas de programación
+                    y desarrollar proyectos que permitan resolver
+                    problemas de manera eficiente.
+                </p>
+
+                <br>
+
+                <p>
+                    Actualmente estoy fortaleciendo mis conocimientos
+                    en HTML, CSS, JavaScript, Python, bases de datos
+                    y metodologías para el desarrollo de software.
+                </p>
+
+            </div>
+
+            <div class="datos">
+
+                <div class="dato">
+                    <strong>Especialidad:</strong>
+                    Ingeniería de Software
+                </div>
+
+                <div class="dato">
+                    <strong>Área:</strong>
+                    Desarrollo Web
+                </div>
+
+                <div class="dato">
+                    <strong>Intereses:</strong>
+                    Programación, tecnología e innovación
+                </div>
+
+                <div class="dato">
+                    <strong>Objetivo:</strong>
+                    Crear soluciones digitales eficientes
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== HABILIDADES ===== -->
+
+    <section id="habilidades">
+
+        <div class="titulo">
+
+            <h2>Mis habilidades</h2>
+
+            <p>
+                Tecnologías y conocimientos que estoy desarrollando.
+            </p>
+
+        </div>
+
+        <div class="habilidades">
+
+            <div class="habilidad">
+                <div class="icono">🌐</div>
+                <h3>HTML5</h3>
+                <p>
+                    Creación de estructuras semánticas
+                    para páginas web.
+                </p>
+            </div>
+
+            <div class="habilidad">
+                <div class="icono">🎨</div>
+                <h3>CSS3</h3>
+                <p>
+                    Diseño visual, responsive,
+                    Flexbox y Grid.
+                </p>
+            </div>
+
+            <div class="habilidad">
+                <div class="icono">⚡</div>
+                <h3>JavaScript</h3>
+                <p>
+                    Funciones, eventos y manipulación
+                    del DOM.
+                </p>
+            </div>
+
+            <div class="habilidad">
+                <div class="icono">🐍</div>
+                <h3>Python</h3>
+                <p>
+                    Programación, estructuras de control
+                    y manejo de archivos.
+                </p>
+            </div>
+
+            <div class="habilidad">
+                <div class="icono">🗄️</div>
+                <h3>Bases de Datos</h3>
+                <p>
+                    Organización y gestión de información.
+                </p>
+            </div>
+
+            <div class="habilidad">
+                <div class="icono">💻</div>
+                <h3>Git y GitHub</h3>
+                <p>
+                    Control de versiones y publicación
+                    de proyectos.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== PROYECTOS ===== -->
+
+    <section id="proyectos">
+
+        <div class="titulo">
+
+            <h2>Mis proyectos</h2>
+
+            <p>
+                Algunos proyectos realizados durante mi formación.
+            </p>
+
+        </div>
+
+        <div class="proyectos">
+
+            <div class="proyecto">
+
+                <h3>🛍️ Mamá & Bebé</h3>
+
+                <p>
+                    Tienda virtual orientada a mujeres embarazadas
+                    y bebés. Incluye catálogo de productos,
+                    precios, carrito y formulario de contacto.
+                </p>
+
+                <div class="tecnologias">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+            </div>
+
+
+            <div class="proyecto">
+
+                <h3>🚗 AutoMax</h3>
+
+                <p>
+                    Tienda virtual de vehículos con buscador,
+                    filtros por marca y tipo de automóvil,
+                    tarjetas de productos y diseño responsive.
+                </p>
+
+                <div class="tecnologias">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+            </div>
+
+
+            <div class="proyecto">
+
+                <h3>⚽ FIFA World Cup 2026</h3>
+
+                <p>
+                    Proyecto interactivo desarrollado en Python
+                    con temática de fútbol, equipos, estadios,
+                    dificultades y sistema de juego.
+                </p>
+
+                <div class="tecnologias">
+                    <span>Python</span>
+                    <span>Pygame</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FORMACIÓN ===== -->
+
+    <section id="formacion">
+
+        <div class="titulo">
+
+            <h2>Formación</h2>
+
+            <p>
+                Mi proceso de aprendizaje.
+            </p>
+
+        </div>
+
+        <div class="formacion">
+
+            <div class="estudio">
+
+                <h3>🎓 Ingeniería de Software</h3>
+
+                <p>
+                    Formación en programación, desarrollo web,
+                    bases de datos, ingeniería de software,
+                    diseño de interfaces y desarrollo de
+                    soluciones tecnológicas.
+                </p>
+
+            </div>
+
+            <div class="estudio">
+
+                <h3>💻 Desarrollo Web</h3>
+
+                <p>
+                    Aprendizaje de HTML5, CSS3, JavaScript,
+                    diseño responsive, Flexbox, Grid y
+                    manipulación del DOM.
+                </p>
+
+            </div>
+
+            <div class="estudio">
+
+                <h3>🐍 Programación</h3>
+
+                <p>
+                    Desarrollo de programas utilizando Python,
+                    estructuras de control, funciones,
+                    archivos y programación orientada a proyectos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== CONTACTO ===== -->
+
+    <section id="contacto">
+
+        <div class="titulo">
+
+            <h2>Contacto</h2>
+
+            <p>
+                Envíame un mensaje.
+            </p>
+
+        </div>
+
+        <div class="contacto">
+
+            <form id="formulario">
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Tu nombre"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="correo"
+                    placeholder="Tu correo electrónico"
+                    required
+                >
+
+                <textarea
+                    id="mensajeTexto"
+                    placeholder="Escribe tu mensaje"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Enviar mensaje
+                </button>
+
+                <p id="mensaje"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>
+            © 2026 Jefferson | Portafolio de Ingeniería de Software
+        </p>
+
+        <p>
+            Desarrollado con HTML, CSS y JavaScript.
+        </p>
+
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", function(evento) {
+
+            evento.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+
+            const mensaje = document.getElementById("mensaje");
+
+            mensaje.textContent =
+                "¡Gracias, " + nombre + "! Tu mensaje fue registrado correctamente.";
+
+            formulario.reset();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+```
